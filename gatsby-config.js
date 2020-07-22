@@ -2,7 +2,6 @@
 const provider = require("nconf");
 
 provider
-    .file("./portal_config.json")
     .env({
         transform({ key, value }) {
             if (!key.toLowerCase().startsWith("portal")) {
@@ -19,6 +18,7 @@ provider
         parseValues: true,
         separator: ".",
     })
+    .file("./portal_config.json")
     .defaults({ contentClientOpts: {} });
 
 module.exports = {
