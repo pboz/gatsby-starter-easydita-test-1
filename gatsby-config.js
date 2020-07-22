@@ -9,7 +9,10 @@ provider
             }
             const k = key
                 .split("_")
-                .map((segment, idx) => (idx > 0 ? `${segment.toUpperCase()}${segment.slice(1)}` : segment))
+                .slice(1)
+                .map((segment, idx) =>
+                    idx === 0 ? segment.toLowerCase() : `${segment[0].toUpperCase()}${segment.slice(1).toLowerCase()}`,
+                )
                 .join("");
 
             console.log(key, value);
